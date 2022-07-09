@@ -28,5 +28,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmendezv1/aws-parking.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmendezv1/aws-parking/issues"
+  },
+  "homepage": "https://github.com/jmendezv1/aws-parking#readme"
 }
