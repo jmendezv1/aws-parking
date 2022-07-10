@@ -58,7 +58,7 @@ CREATE TABLE user_has_roles(
     updated_at TIMESTAMP(0) NOT NULL,
     FOREIGN KEY(id_user) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(id_rol) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    PRIMARY KEY(id_user,id_rol)
+    PRIMARY KEY(id_user, id_rol)    
 );
 
 
