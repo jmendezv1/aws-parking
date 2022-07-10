@@ -14,6 +14,22 @@ User.getAll = () => {
     return db.manyOrNone(sql);
 }
 
+User.updateToken = (id,token) => {
+    const sql = `
+    SELECT
+        users
+    SET
+        session_token = $2,
+    WHERE
+        id = $1
+    `;
+
+    return db.none(sql, [
+        id,
+        token
+    ]);
+}
+
 User.findById = (id, callback) => {
 
     const sql = `

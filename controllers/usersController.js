@@ -73,7 +73,9 @@ module.exports = {
                     session_token: `JWT ${token}`
                 }
 
-                console.log(`DATA ENVIADA ${data.session_token}`);
+                await User.updateToken(myUser.id,`JWT ${token}`);
+
+                console.log(`Usuario: ${data.email} a sido creado`);
 
                 return res.status(201).json({
                     success: true,
