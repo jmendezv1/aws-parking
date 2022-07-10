@@ -16,10 +16,10 @@ User.getAll = () => {
 
 User.updateToken = (id,token) => {
     const sql = `
-    SELECT
+    UPDATE
         users
     SET
-        session_token = $2,
+        session_token = $2
     WHERE
         id = $1
     `;
