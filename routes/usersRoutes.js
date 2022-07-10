@@ -1,4 +1,5 @@
 const UserController = require('../controllers/usersController');
+const passport = require('passport');
 
 module.exports = (app) => {
     //Get : Obtener datos
@@ -7,6 +8,7 @@ module.exports = (app) => {
     app.post('/api/users/create',UserController.register);
     //Post: para emitir un login
     app.post('/api/users/login',UserController.login);
-
+    //Post: para emitir un login
+    app.post('/api/users/login',UserController.login);
 
 }
