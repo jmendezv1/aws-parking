@@ -32,10 +32,6 @@ app.set('port',port);
 * LLAMANDO A LAS RUTAS
 */
 users(app);
-//172.16.220.73
-//192.168.0.127
-//172.16.214.174
-//18.220.155.194
 
 // server.listen(3000,'192.168.0.127' || 'localhost', function(){
 //     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
@@ -45,9 +41,6 @@ server.listen(port, () => {
     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 });
 
-// app.get('/',(req,res) =>{
-//     res.send('Ruta rais del backend');
-// });
 
 app.get('/test',(req,res) =>{
     res.send('Probando servidor de AWS');
