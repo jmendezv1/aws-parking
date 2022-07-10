@@ -43,7 +43,7 @@ server.listen(port, () => {
 
 
 app.get('/test',(req,res) =>{
-    res.send('Probando servidor de AWS');
+    res.send('Copiar codigos del video de youtube y de curso mini');
 });
 
 // ERROR HANDLER
