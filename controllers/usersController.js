@@ -73,12 +73,14 @@ module.exports = {
                     img: myUser.img,
                     password: myUser.password,
                     plaza: myUser.plaza,
-                    session_token: `JWT ${token}`
+                    session_token: `JWT ${token}`,
+                    roles: myUser.roles
                 }
 
                 await User.updateToken(myUser.id,`JWT ${token}`);
 
-                console.log(`Usuario: ${data.email} a sido creado`);
+                // console.log(`Usuario: ${data.email} a sido creado`);
+                // console.log(`Usuario: ${data.email} a sido creado`);
 
                 return res.status(201).json({
                     success: true,
