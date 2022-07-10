@@ -16,7 +16,7 @@ INSERT INTO roles (
 )
 VALUES(
     'USUARIO',
-    'loadingS',
+    'user',
     '2022-07-10',
     '2022-07-10'
 );
