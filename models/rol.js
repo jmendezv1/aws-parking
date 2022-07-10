@@ -2,7 +2,7 @@ const db = require('../config/config');
 
 const Rol = {};
 
-Rol.crate = (id_user,id_rol) => {
+Rol.create = (id_user,id_rol) => {
     const sql =`
     INSERT INTO
         user_has_roles(
