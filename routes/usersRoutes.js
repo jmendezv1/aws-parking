@@ -9,6 +9,6 @@ module.exports = (app) => {
     //Post: para emitir un login
     app.post('/api/users/login',UserController.login);
     //Post: para emitir un login
-    app.post('/api/users/login',UserController.login);
+    // app.post('/api/users/login',UserController.login);
 
 }

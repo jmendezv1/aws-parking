@@ -50,7 +50,7 @@ CREATE TABLE users(
     updated_at TIMESTAMP(0) NOT NULL
 ); 
 
-DROP TABLE IF EXISTS users_has_roles CASCADE;
+DROP TABLE IF EXISTS user_has_roles CASCADE;
 CREATE TABLE user_has_roles(
     id_user BIGSERIAL NOT NULL,
     id_rol BIGSERIAL NOT NULL,
