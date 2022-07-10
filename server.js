@@ -11,7 +11,8 @@ const cors = require('cors');
 
 const users = require('./routes/usersRoutes');
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Settings
 
@@ -36,7 +37,11 @@ users(app);
 //172.16.214.174
 //18.220.155.194
 
-server.listen(3000,'192.168.0.127' || 'localhost', function(){
+// server.listen(3000,'192.168.0.127' || 'localhost', function(){
+//     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
+// });
+
+server.listen(port, () => {
     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 });
 
@@ -44,9 +49,9 @@ server.listen(3000,'192.168.0.127' || 'localhost', function(){
 //     res.send('Ruta rais del backend');
 // });
 
-// app.get('/test',(req,res) =>{
-//     res.send('Ruta test');
-// });
+app.get('/test',(req,res) =>{
+    res.send('Probando servidor de AWS');
+});
 
 // ERROR HANDLER
 app.use((err,req,res,next) =>{

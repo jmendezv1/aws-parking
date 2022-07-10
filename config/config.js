@@ -12,11 +12,11 @@ types.setTypeParser(1114,function(stringValue){
 });
 
 const databaseConfig ={
-    'host':'127.0.0.1',
+    'host':'aws-server-parking.cfdbprk1yz9h.us-east-2.rds.amazonaws.com',
     'port':'5432',
-    'database':'user_db',
+    'database':'awsparkingserver',
     'user':'postgres',
-    'password':'parking'
+    'password':'parking89'
 };
 
 const db = pgp(databaseConfig);
