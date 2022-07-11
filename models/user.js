@@ -128,7 +128,25 @@ User.create = (user) => {
         new Date()
     ]);
 }
+User.update = (user) => {
+    const sql = `
+    UPDATE
+        users
+    SET
+        plate = $2,
+        plaza = $3,
+        updated_at = $4
+    WHERE
+        id = $1
+    `;
+    return db.none(sql,[
+        user.id,
+        user.plate,
+        user.plaza,
+        new Date()
 
+    ])
+}
 User.isPasswordMatched = (userPassword, hash) => {
     const myPasswordHashed = crypto.createHash('md5').update(userPassword).digest('hex');
     if (myPasswordHashed === hash) {

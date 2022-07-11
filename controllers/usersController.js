@@ -44,7 +44,28 @@ module.exports = {
             });
         }
     },
+    async update(req, res, next) {
+        try {
+            
+            const user = req.body;
+            await User.update(user);
 
+            return res.status(201).json({
+                success: true,
+                message: 'Los datos del usuario se actualizaron correctamente'
+            });
+
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Hubo un error con la actualización de datos del usuario',
+                error: error
+            });
+        }
+    },
+    
     async login(req, res, next) {
         try {
             const email = req.body.email;
