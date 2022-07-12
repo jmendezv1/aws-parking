@@ -46,10 +46,7 @@ module.exports = {
     },
     async update(req, res, next) {
         try {
-
             const user = req.body;
-
-            console.log(`Datos 0 enviados del usuario: ${user}`);
 
             await User.update(user);
 
