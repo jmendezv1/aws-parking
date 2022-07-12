@@ -46,8 +46,8 @@ module.exports = {
     },
     async update(req, res, next) {
         try {
-            
-            const user = req.body;
+            const user = Json.parse(req.body.user);
+
             await User.update(user);
 
             return res.status(201).json({
