@@ -46,7 +46,7 @@ module.exports = {
     },
     async update(req, res, next) {
         try {
-            const user = req.body;
+            const user = JSON.parse(req.body.user);
 
             console.log(`Datos 0 enviados del usuario: ${JSON.stringify(user)}`);
 
