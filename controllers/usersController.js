@@ -48,6 +48,8 @@ module.exports = {
         try {
             const user = req.body;
 
+            console.log(`Datos enviados del usuario: ${user}`)
+
             await User.update(user);
 
             return res.status(201).json({
