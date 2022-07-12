@@ -48,10 +48,10 @@ module.exports = {
         try {
             const user = req.body;
 
-            console.log(`Datos 0 enviados del usuario: ${user.User}`);
-            console.log(`Datos 1 enviados del usuario: ${user.body}`);
-            console.log(`Datos 2 enviados del usuario: ${user.data}`);
-            console.log(`Datos 3 enviados del usuario: ${user.plate}`);
+            console.log(`Datos 0 enviados del usuario: ${JSON.stringify(user.User)}`);
+            console.log(`Datos 1 enviados del usuario: ${JSON.stringify(user.body)}`);
+            console.log(`Datos 2 enviados del usuario: ${JSON.stringify(user.data)}`);
+            console.log(`Datos 3 enviados del usuario: ${JSON.stringify(user.plate)}`);
             await User.update(user);
 
             return res.status(201).json({
