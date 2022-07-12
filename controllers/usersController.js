@@ -2,6 +2,7 @@ const User = require('../models/user');
 const Rol = require('../models/rol');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
+const { findById } = require('../models/user');
 
 module.exports = {
 
@@ -16,6 +17,23 @@ module.exports = {
             return res.status(501).json({
                 success: false,
                 message: 'Error al obtener los usuarios'
+            });
+        }
+    },
+
+    async findById(req, res, next) {
+        try {
+            const id = req.params.id;
+
+            const data = await User.findByUserId(id);  
+            console.log(`Usuarios: ${data}`);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Error al obtener actualizados del usuario'
             });
         }
     },

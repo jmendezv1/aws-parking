@@ -4,6 +4,9 @@ const passport = require('passport');
 module.exports = (app) => {
     //Get : Obtener datos
     app.get('/api/users/getAll',UserController.getAll);
+    //Get : Obtener datos actualizados del user
+    app.get('/api/users/findById/:id',UserController.findById);
+
     //Post: Ingresr datos
     app.post('/api/users/create',UserController.register);
     //Post: para emitir un login
