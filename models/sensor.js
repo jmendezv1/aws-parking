@@ -13,6 +13,7 @@ Sensor.getAll = () => {
 
     return db.manyOrNone(sql);
 }
+//CAMBIOOOOOSSSSSSS
 
 Sensor.updateToken = (id,token) => {
     const sql = `
@@ -36,7 +37,6 @@ Sensor.findById = (id, callback) => {
     SELECT
         id,
         plate,
-        plaza,
         session_token
     FROM
         sensors
@@ -51,9 +51,6 @@ Sensor.findBysensorId = (id) => {
     const sql = `
     SELECT
         U.id,
-        U.plate,
-        U.password,
-        U.plaza,
         U.session_token,
         json_agg(
             json_build_object(
