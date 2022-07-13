@@ -150,11 +150,12 @@ module.exports = {
         try {
             const id = req.body.id;
             await User.updateToken(id,null);
-            return res.status(401).json({
+
+            return res.status(201).json({
                 success: true,
                 message: 'La sesion del usuario se ha cerrado correctamente'
             });
-        } catch (e) {
+        } catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
                 success: false,
