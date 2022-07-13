@@ -4,6 +4,7 @@ const http = require('http');
 const server = http.createServer(app);
 const logger = require('morgan');
 const cors = require('cors');
+const passport =require('passport');
 
 /*
 * RUTAS
@@ -23,6 +24,9 @@ app.use(express.urlencoded({
 })); 
 
 app.use(cors()); // l pasamos los cors
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport')(passport);
 
 app.disable('x-powered-by'); // para la seguridad
 
