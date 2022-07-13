@@ -12,6 +12,6 @@ module.exports = (app) => {
     //Post: para emitir un login
     app.post('/api/users/login',UserController.login);
     //Get: actualizar datos del usuario
-    app.put('/api/users/update',UserController.update);
+    app.put('/api/users/update',passport.authenticate('jwt',{session:false}),UserController.update);
 
 }
