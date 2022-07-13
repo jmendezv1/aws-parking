@@ -147,16 +147,20 @@ module.exports = {
         }
     },
     async logout(req, res, next) {
+        const id = req.body.id;
         try {
-            const id = req.body.id;
+            // const id = req.body.id;
             await User.updateToken(id,null);
 
             return res.status(201).json({
                 success: true,
                 message: 'La sesion del usuario se ha cerrado correctamente'
             });
+
         } catch (error) {
             console.log(`Error: ${error}`);
+            console.log(`Usuario: ${id}`);
+
             return res.status(501).json({
                 success: false,
                 message: 'Error al momento de cerrar sesion',
