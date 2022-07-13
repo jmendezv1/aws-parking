@@ -148,7 +148,7 @@ module.exports = {
     },
     async logout(req, res, next) {
         try {
-            const id = req.id;
+            const id = req.body.id;
             await User.updateToken(id,null);
             return res.status(401).json({
                 success: true,
