@@ -2,6 +2,8 @@ const UserController = require('../controllers/usersController');
 const passport = require('passport');
 
 module.exports = (app) => {
+
+    //TODO: Users
     //Get : Obtener datos
     app.get('/api/users/getAll',UserController.getAll);
     //Get : Obtener datos actualizados del user
@@ -15,6 +17,5 @@ module.exports = (app) => {
     app.post('/api/users/logout',UserController.logout);
     //Get: actualizar datos del usuario
     app.put('/api/users/update',passport.authenticate('jwt',{session:false}),UserController.update);
-
 
 }

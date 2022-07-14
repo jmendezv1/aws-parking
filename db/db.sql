@@ -77,4 +77,16 @@ CREATE TABLE user_has_roles(
 --     parking_Lot VARCHAR(255) NOT NULL
 -- ); 
 
-
+CREATE TABLE parking1_sensors (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    lag_place VARCHAR(255) NOT NULL UNIQUE,
+    log_place VARCHAR(255) NOT NULL UNIQUE,
+    type_place VARCHAR(100) NOT NULL,
+    plate VARCHAR(100) NOT NULL,
+    code VARCHAR(255) NOT NULL,
+    available BOOLEAN NOT NULL,
+    description VARCHAR(255) NULL,
+    created_s TIMESTAMP(0) NOT NULL,
+    updated_s TIMESTAMP(0) NOT NULL
+); 
