@@ -20,11 +20,10 @@ module.exports = {
     },
 
     async register(req, res, next) {
-        const sensor = req.body;
-        console.log(`Sensor: ${data} a sido creado`);
+        
+        // console.log(`Sensor: ${data} a sido creado`);
         try {
-            
-            
+            const sensor = req.body;
             const data = await Parking1Sensor.create(sensor);
 
             // await Rol.create(data.id,1); //ROL POR DEFENCTO (USER)
