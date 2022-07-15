@@ -24,7 +24,7 @@ Parking1Sensor.placefree = () => {
         available = true
     `;
 
-    return db.manyOrNone(sql);
+    return db.oneOrNone(sql);
 }
 
 
