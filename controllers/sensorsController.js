@@ -20,7 +20,7 @@ module.exports = {
     },
     async placefree(req, res, next) {
         try {
-            const data = await Parking1Sensor.placefree();    
+            const data = await Parking1Sensor.placefree().data;    
             console.log(`Parking1: ${data}`);
             return res.status(201).json({
                 success: true,
