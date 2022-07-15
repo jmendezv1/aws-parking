@@ -14,7 +14,18 @@ Parking1Sensor.getAll = () => {
     return db.manyOrNone(sql);
 }
 
+Parking1Sensor.placefree = () => {
+    const sql = `
+    SELECT 
+        COUNT(*)
+    FROM
+        parking1_sensors
+    WHERE 
+        available = true
+    `;
 
+    return db.none(sql);
+}
 // Parking1Sensor.updateToken = (id,token) => {
 //     const sql = `
 //     UPDATE
