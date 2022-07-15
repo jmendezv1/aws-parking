@@ -23,12 +23,12 @@ Parking1Sensor.placefree = () => {
     WHERE 
         available = true
     `;
-    const info = []
 
-    return db.manyOrNone(sql,[
-        count
-    ]);
+    return db.manyOrNone(sql);
 }
+
+
+
 // Parking1Sensor.updateToken = (id,token) => {
 //     const sql = `
 //     UPDATE
