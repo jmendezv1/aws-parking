@@ -13,7 +13,7 @@ module.exports = (app) => {
     app.post('/api/users/create',UserController.register);
     //Post: para emitir un login
     app.post('/api/users/login',UserController.login);
-    //Post: para emitir un login
+    //Post: para dalir del login
     app.post('/api/users/logout',UserController.logout);
     //Get: actualizar datos del usuario
     app.put('/api/users/update',passport.authenticate('jwt',{session:false}),UserController.update);

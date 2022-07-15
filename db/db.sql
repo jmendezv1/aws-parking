@@ -62,6 +62,52 @@ CREATE TABLE user_has_roles(
 );
 
 
+-- =========================================
+
+DROP TABLE IF EXISTS parking1_sensors CASCADE;
+CREATE TABLE parking1_sensors (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    lag_place VARCHAR(255) NOT NULL UNIQUE,
+    log_place VARCHAR(255) NOT NULL UNIQUE,
+    type_place VARCHAR(100) NOT NULL,
+    plate VARCHAR(100) NOT NULL,
+    code VARCHAR(255) NOT NULL,
+    available BOOLEAN NOT NULL,
+    description VARCHAR(255) NULL,
+    created_s TIMESTAMP(0) NOT NULL,
+    updated_s TIMESTAMP(0) NOT NULL
+); 
+
+
+DROP TABLE IF EXISTS parqueaderos CASCADE;
+CREATE TABLE parqueaderos(
+    id_user BIGSERIAL NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    cantidad VARCHAR(255) NOT NULL,
+    -- plazas_libres VARCHAR(255) NOT NULL,
+    -- plazas_ocupadas VARCHAR(255) NOT NULL,
+    -- lag_place VARCHAR(255) NOT NULL UNIQUE,
+    -- log_place VARCHAR(255) NOT NULL UNIQUE,
+    -- description VARCHAR(255) NULL,
+    -- created_at TIMESTAMP(0) NOT NULL,
+    -- updated_at TIMESTAMP(0) NOT NULL,
+    FOREIGN KEY(cantidad) REFERENCES ( SELECT 
+COUNT(*)
+    FROM
+        parking1_sensors
+    WHERE 
+        available = true) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    PRIMARY KEY(cantidad)    
+);
+
+INSERT INTO parqueaderos (
+    name
+)
+VALUES(
+    'Parqueadero 1'
+);
 -- CREATE TABLE parking_place(
 --     id BIGSERIAL PRIMARY KEY,
 --     name_place VARCHAR(255) NOT NULL,

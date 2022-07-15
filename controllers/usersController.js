@@ -53,6 +53,7 @@ module.exports = {
             });
 
         } 
+
         catch (error) {
             console.log(`Error: ${error}`);
             return res.status(501).json({
@@ -62,6 +63,7 @@ module.exports = {
             });
         }
     },
+    
     async update(req, res, next) {
         try {
             const user = req.body;
@@ -101,7 +103,7 @@ module.exports = {
             if (User.isPasswordMatched(password, myUser.password)) {
                 const token = jwt.sign({id: myUser.id, email: myUser.email}, keys.secretOrKey, {
                     // expiresIn: (60*60*24) // 1 HORA
-                    expiresIn: (60*2) // 2 minutos
+                    // expiresIn: (60*2) // 2 minutos
 
                 });
                 const data = {

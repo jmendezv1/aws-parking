@@ -23,6 +23,7 @@ Parking1Sensor.placefree = () => {
     WHERE 
         available = true
     `;
+    const info = []
 
     return db.manyOrNone(sql,[
         count

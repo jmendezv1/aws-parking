@@ -38,7 +38,7 @@ app.set('port',port);
 */
 users(app);
 sensorp1(app);
-// server.listen(3000,'192.168.0.127' || 'localhost', function(){
+// server.listen(3000,'172.16.217.195' || 'localhost', function(){
 //     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 // });
 
