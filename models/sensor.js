@@ -24,7 +24,7 @@ Parking1Sensor.placefree = () => {
         available = true
     `;
 
-    return db.none(sql);
+    return db.manyOrNone(sql);
 }
 // Parking1Sensor.updateToken = (id,token) => {
 //     const sql = `
