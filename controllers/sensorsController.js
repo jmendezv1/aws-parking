@@ -21,11 +21,10 @@ module.exports = {
     async placefree(req, res, next) {
         try {
             const data = await Parking1Sensor.placefree();    
-            const info = data.body;
-            console.log(`Parking1: ${info}`);
+            console.log(`Parking1: ${data}`);
             return res.status(201).json({
                 success: true,
-                data: info,
+                data: data,
                 message:'La consulta de plazas libres fue realizado correctamente'
             });
         } 
