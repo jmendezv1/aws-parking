@@ -8,7 +8,6 @@ module.exports = (app) => {
     app.get('/api/users/getAll',UserController.getAll);
     //Get : Obtener datos actualizados del user
     app.get('/api/users/findById/:id',passport.authenticate('jwt',{session:false}), UserController.findById);
-
     //Post: Ingresr datos
     app.post('/api/users/create',UserController.register);
     //Post: para emitir un login

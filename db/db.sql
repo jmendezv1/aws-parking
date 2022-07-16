@@ -82,32 +82,42 @@ CREATE TABLE parking1_sensors (
 
 DROP TABLE IF EXISTS parqueaderos CASCADE;
 CREATE TABLE parqueaderos(
-    id_user BIGSERIAL NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    cantidad VARCHAR(255) NOT NULL,
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    -- cantidad VARCHAR(255) NOT NULL,
     -- plazas_libres VARCHAR(255) NOT NULL,
     -- plazas_ocupadas VARCHAR(255) NOT NULL,
     -- lag_place VARCHAR(255) NOT NULL UNIQUE,
     -- log_place VARCHAR(255) NOT NULL UNIQUE,
-    -- description VARCHAR(255) NULL,
-    -- created_at TIMESTAMP(0) NOT NULL,
-    -- updated_at TIMESTAMP(0) NOT NULL,
-    FOREIGN KEY(cantidad) REFERENCES ( SELECT 
-COUNT(*)
-    FROM
-        parking1_sensors
-    WHERE 
-        available = true) ON UPDATE CASCADE ON DELETE CASCADE,
-
-    PRIMARY KEY(cantidad)    
+    description VARCHAR(255) NULL,
+    created_ps TIMESTAMP(0) NOT NULL,
+    updated_ps TIMESTAMP(0) NOT NULL   
 );
 
-INSERT INTO parqueaderos (
-    name
-)
-VALUES(
-    'Parqueadero 1'
+
+DROP TABLE IF EXISTS sensors CASCADE;
+CREATE TABLE sensors(
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    lag_s VARCHAR(255) NULL UNIQUE,
+    log_s VARCHAR(255) NULL UNIQUE,
+    type_place VARCHAR(100) NOT NULL,
+    plate VARCHAR(100) NOT NULL,
+    code VARCHAR(255) NULL,
+    available BOOLEAN NOT NULL,
+    description VARCHAR(255) NULL,
+    id_parking BIGINT NOT NULL,
+    created_srs TIMESTAMP(0) NOT NULL,
+    updated_srs TIMESTAMP(0) NOT NULL,
+    FOREIGN KEY (id_parking) REFERENCES parqueaderos(id) ON UPDATE CASCADE ON DELETE CASCADE
+
 );
+-- INSERT INTO parqueaderos (
+--     name
+-- )
+-- VALUES(
+--     'Parqueadero 1'
+-- );
 -- CREATE TABLE parking_place(
 --     id BIGSERIAL PRIMARY KEY,
 --     name_place VARCHAR(255) NOT NULL,
@@ -136,3 +146,27 @@ CREATE TABLE parking1_sensors (
     created_s TIMESTAMP(0) NOT NULL,
     updated_s TIMESTAMP(0) NOT NULL
 ); 
+
+
+
+
+-- ===================================
+SELECT
+	P.id,
+	P.name,
+	P.lag_s,
+	P.log_s,
+	P.type_place,
+	P.plate,
+	P.code,
+	P.available,
+	P.description,
+	P.id_parking
+FROM
+	sensors AS P
+INNER JOIN
+	parqueaderos AS C
+ON 
+	P.id_parking = C.id
+WHERE
+	C.id = 1

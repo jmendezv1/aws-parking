@@ -11,7 +11,6 @@ const passport =require('passport');
 */
 
 const users = require('./routes/usersRoutes');
-const sensorp1 = require('./routes/sensorsP1Route');
 const parqueaderos = require('./routes/parqueaderosRoutes');
 const sensores = require('./routes/sensoresRoutes');
 // const port = process.env.PORT || 3000;
@@ -38,7 +37,6 @@ app.set('port',port);
 * LLAMANDO A LAS RUTAS
 */
 users(app);
-sensorp1(app);
 parqueaderos(app);
 sensores(app);
 
