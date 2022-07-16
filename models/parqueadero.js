@@ -1,6 +1,18 @@
 const db = require('../config/config');
 const Parqueadero = {};
 
+Parqueadero.countParkingfree = (id_parking) => {
+    const sql = `
+    SELECT 
+        COUNT(*) 
+    FROM 
+        sensors  
+    WHERE (available = true) and (id_parking = $1) 
+    `;
+
+    return db.oneOrNone(sql,id_parking);
+}
+
 Parqueadero.getAll = () => {
     const sql = `
     SELECT 
