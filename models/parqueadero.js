@@ -1,6 +1,21 @@
 const db = require('../config/config');
 const Parqueadero = {};
 
+Parqueadero.getAll = () => {
+    const sql = `
+    SELECT 
+        id,
+        name,
+        description
+    FROM
+        parqueaderos
+    ORDER BY
+        name
+    `;
+
+    return db.manyOrNone(sql);
+}
+
 Parqueadero.create = (parqueadero) =>{
     const sql = `
     INSERT INTO

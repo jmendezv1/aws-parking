@@ -2,6 +2,21 @@ const Parqueadero = require('../models/parqueadero');
 
 module.exports = {
 
+    async getAll(req, res, next) {
+        try {
+            const data = await Parqueadero.getAll();   
+            console.log(`Usuarios: ${data}`);
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Error al obtener los parqueaderos',
+                error: error
+            });
+        }
+    },
     async create(req,res,next){
         try {
             const parqueadero = req.body;
