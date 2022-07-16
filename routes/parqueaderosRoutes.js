@@ -9,5 +9,5 @@ module.exports = (app) => {
     //Post: Ingresar datos
     app.post('/api/parqueaderos/create',passport.authenticate('jwt',{session:false}),ParqueaderoController.create);
     //Get : Obtener datos de plazas libres
-    app.get('/api/sensores/countParkingfree/:id_parking',passport.authenticate('jwt',{session:false}),ParqueaderoController.countParkingfree);
+    app.get('/api/parqueaderos/countParkingfree/:id_parking',passport.authenticate('jwt',{session:false}),ParqueaderoController.countParkingfree);
 }
