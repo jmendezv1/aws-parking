@@ -4,6 +4,22 @@ const Sensor = require('../models/sensores');
 
 module.exports = {
 
+    async findByParqueadero(req, res, next) {
+        try {
+            const id = req.params.id_parking; //CLIENTE
+            const data = await Sensor.findByParqueadero(id); 
+            return res.status(201).json(data);
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false,
+                message: 'Error al obtener todos los sensores del parqueadero x',
+                error: error
+            });
+        }
+    },
+
     // async getAll(req, res, next) {
     //     try {
     //         const data = await Parking1Sensor.getAll();    
