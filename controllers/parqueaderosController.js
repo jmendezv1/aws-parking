@@ -21,8 +21,6 @@ module.exports = {
                 message: 'Hubo un error al crear el parqueadero',
                 error:error
             });
-            
         }
-
     }
 }

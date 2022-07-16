@@ -1,5 +1,5 @@
 const db = require('../config/config');
-const Parqueadero = {}
+const Parqueadero = {};
 
 Parqueadero.create = (parqueadero) =>{
     const sql = `
