@@ -11,8 +11,8 @@ Sensor.create = (sensor) =>{
             available,
             description,
             id_parking,
-            created_ps,
-            updated_ps   
+            created_srs,
+            updated_srs  
         )
     VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING id
     `;
@@ -38,7 +38,7 @@ Sensor.update = (sensor) =>{
         available = $5,
         description = $6,
         id_parking = $7,
-        updated_ps = $8
+        updated_srs = $8
     WHERE
         id = $1
     `;
