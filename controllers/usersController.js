@@ -51,7 +51,6 @@ module.exports = {
                 message: 'El registro se realizo correctamente',
                 data: data.id
             });
-
         } 
 
         catch (error) {
@@ -67,14 +66,11 @@ module.exports = {
     async update(req, res, next) {
         try {
             const user = req.body;
-
             await User.update(user);
-
             return res.status(201).json({
                 success: true,
                 message: 'Los datos del usuario se actualizaron correctamente'
             });
-
         } 
         catch (error) {
             console.log(`Error: ${error}`);

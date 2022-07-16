@@ -37,20 +37,16 @@ module.exports = {
         }
     },
     async register(req, res, next) {
-        
         // console.log(`Sensor: ${data} a sido creado`);
         try {
             const sensor = req.body;
             const data = await Parking1Sensor.create(sensor);
-
             // await Rol.create(data.id,1); //ROL POR DEFENCTO (USER)
-
             return res.status(201).json({
                 success: true,
                 message: 'El registro del sensor P1 se realizo correctamente',
                 data: data.id
             });
-
         } 
         catch (error) {
             console.log(`Error: ${error}`);
@@ -64,9 +60,7 @@ module.exports = {
     // async update(req, res, next) {
     //     try {
     //         const user = req.body;
-
     //         await User.update(user);
-
     //         return res.status(201).json({
     //             success: true,
     //             message: 'Los datos del usuario se actualizaron correctamente'

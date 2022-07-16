@@ -9,6 +9,4 @@ module.exports = (app) => {
     app.post('/api/parking1_sensors/create',SensorP1Controller.register);
     //Get : Obtener datos de plazas libres
     app.get('/api/parking1_sensors/placefree',SensorP1Controller.placefree);
-
-
 }

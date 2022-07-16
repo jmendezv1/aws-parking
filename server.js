@@ -12,6 +12,7 @@ const passport =require('passport');
 
 const users = require('./routes/usersRoutes');
 const sensorp1 = require('./routes/sensorsP1Route');
+const parqueaderos = require('./routes/parqueaderosRoutes');
 
 // const port = process.env.PORT || 3000;
 const port = 3000;
@@ -38,6 +39,8 @@ app.set('port',port);
 */
 users(app);
 sensorp1(app);
+parqueaderos(app);
+
 // server.listen(3000,'172.16.217.195' || 'localhost', function(){
 //     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 // });
