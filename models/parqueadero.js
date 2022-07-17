@@ -7,7 +7,7 @@ Parqueadero.countParkingfree = (id_parking) => {
         COUNT(*) 
     FROM 
         sensors  
-    WHERE (available = true) and (id_parking = $1) 
+    WHERE (available = false) and (id_parking = $1) 
     `;
 
     return db.oneOrNone(sql,id_parking);
