@@ -57,24 +57,18 @@ Sensor.update = (sensor) =>{
     UPDATE
         sensors
     SET
-        name = $2,
-        type_place = $3,
-        plate = $4,
-        available = $5,
-        description = $6,
-        id_parking = $7,
-        updated_srs = $8
+        plate = $2,
+        available = $3,
+        description = $4,
+        updated_srs = $5
     WHERE
         id = $1
     `;
     return db.none(sql,[
         sensor.id,
-        sensor.name,
-        sensor.type_place,
         sensor.plate,
         sensor.available,
         sensor.description,
-        sensor.id_parking,
         new Date()
     ]);
 }
