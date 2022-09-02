@@ -60,6 +60,22 @@ server.listen(port, (err) => {
 //     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 // });
 
+app.post('/libelium',(req,res) =>{
+
+    let data = "";
+    let chunkIndex = 0;
+
+    req.on("data",(chunk) =>{
+        data += chunk;
+
+        chunkIndex ++;
+        console.log(chunkIndex);
+    });
+    req.on("end",() =>{
+        res.end("Recibido");
+    }); 
+    // res.send('Copiar codigos del video de youtube y de curso mini');
+});
 
 app.get('/test',(req,res) =>{
     res.send('Copiar codigos del video de youtube y de curso mini');
