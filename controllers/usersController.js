@@ -110,8 +110,11 @@ module.exports = {
                     ci: myUser.ci,
                     phone: myUser.phone,
                     img: myUser.img,
+                    msg: myUser.msg,
                     password: myUser.password,
+                    parqueadero:myUser.parqueadero,
                     plaza: myUser.plaza,
+                    available: myUser.available,
                     session_token: `JWT ${token}`,
                     roles: myUser.roles
                 }

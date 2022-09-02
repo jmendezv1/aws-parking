@@ -21,7 +21,9 @@ Sensor.findByParqueadero = (id_parking) => {
     ON 
 	    P.id_parking = C.id
     WHERE
-	    C.id = $1
+	    C.id = $1 AND P.id != 1 AND P.id != 2  AND P.id != 3  AND P.id != 4  AND P.id != 5 
+    ORDER BY 
+        name
     `;
     return db.manyOrNone(sql,id_parking);
 }

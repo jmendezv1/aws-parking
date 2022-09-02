@@ -13,10 +13,12 @@ types.setTypeParser(1114,function(stringValue){
 
 const databaseConfig ={
     'host':'aws-server-parking.cfdbprk1yz9h.us-east-2.rds.amazonaws.com',
+    // 'host':'127.0.0.1',
     'port':'5432',
     'database':'awsparkingserver',
     'user':'postgres',
     'password':'parking89'
+    // RDS-database-Parking
 };
 
 const db = pgp(databaseConfig);

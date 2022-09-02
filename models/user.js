@@ -14,7 +14,7 @@ User.getAll = () => {
     return db.manyOrNone(sql);
 }
 
-User.updateToken = (id,token) => {
+User.updateToken = (id,session_token) => {
     const sql = `
     UPDATE
         users
@@ -26,12 +26,11 @@ User.updateToken = (id,token) => {
 
     return db.none(sql, [
         id,
-        token
+        session_token
     ]);
 }
 
 User.findById = (id, callback) => {
-
     const sql = `
     SELECT
         id,
@@ -41,8 +40,11 @@ User.findById = (id, callback) => {
         ci,
         phone,
         img,
+        msg,
         password,
+        parqueadero,
         plaza,
+        available,
         session_token
     FROM
         users
@@ -63,8 +65,11 @@ User.findByUserId = (id) => {
         U.ci,
         U.phone,
         U.img,
+        U.msg,
         U.password,
+        U.parqueadero,
         U.plaza,
+        U.available,
         U.session_token,
         json_agg(
             json_build_object(
@@ -103,8 +108,11 @@ User.findByEmail = (email) => {
         U.ci,
         U.phone,
         U.img,
+        U.msg,
         U.password,
+        U.parqueadero,
         U.plaza,
+        U.available,
         U.session_token,
         json_agg(
             json_build_object(
@@ -147,12 +155,15 @@ User.create = (user) => {
             ci,
             phone,
             img,
+            msg,
             password,
+            parqueadero,
             plaza,
+            available,
             created_at,
             updated_at
         )
-    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING id
     `;
 
     return db.oneOrNone(sql, [
@@ -162,12 +173,16 @@ User.create = (user) => {
         user.ci,
         user.phone,
         user.img,
+        user.msg,
         user.password,
         user.plaza,
+        user.parqueadero,
+        user.available,
         new Date(),
         new Date()
     ]);
 }
+
 User.update = (user) => {
     const sql = `
     UPDATE
@@ -175,7 +190,10 @@ User.update = (user) => {
     SET
         plate = $2,
         plaza = $3,
-        updated_at = $4
+        parqueadero = $4,
+        msg= $5,
+        available = $6,
+        updated_at = $7
     WHERE
         id = $1
     `;
@@ -183,6 +201,9 @@ User.update = (user) => {
         user.id,
         user.plate,
         user.plaza,
+        user.parqueadero,
+        user.msg,
+        user.available,
         new Date()
 
     ])

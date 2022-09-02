@@ -1,0 +1,23 @@
+module.exports = (io) => {
+
+    const orderDeliveryNamespace = io.of('/orders/delivery');
+
+}
+
+// const { io } = require('../server');
+
+// io.on('connection', client => {
+//     console.log('Cliente conectado');
+
+//     client.on('disconnect', () => {
+//         console.log('Cliente desconectado');
+//     });
+
+//     client.on('mensaje', ( payload ) => {
+//         console.log('Mensaje', payload);
+
+//         io.emit( 'mensaje', { admin: 'Nuevo mensaje' } );
+
+//     });
+
+// });

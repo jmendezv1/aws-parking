@@ -42,9 +42,11 @@ CREATE TABLE users(
     ci VARCHAR(80) NOT NULL UNIQUE,
     phone VARCHAR(80) NOT NULL UNIQUE,
     img VARCHAR(80) NULL,
+    msg VARCHAR(255) NULL,
     password VARCHAR(255) NOT NULL,
+    parqueadero VARCHAR(50) NOT NULL,
     plaza VARCHAR(50) NOT NULL,
-    is_available BOOLEAN NULL,
+    available BOOLEAN NOT NULL,
     session_token VARCHAR (255) NULL,
     created_at TIMESTAMP(0) NOT NULL,
     updated_at TIMESTAMP(0) NOT NULL
@@ -60,7 +62,6 @@ CREATE TABLE user_has_roles(
     FOREIGN KEY(id_rol) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE,
     PRIMARY KEY(id_user, id_rol)    
 );
-
 
 -- =========================================
 
@@ -79,7 +80,6 @@ CREATE TABLE parking1_sensors (
     updated_s TIMESTAMP(0) NOT NULL
 ); 
 
-
 DROP TABLE IF EXISTS parqueaderos CASCADE;
 CREATE TABLE parqueaderos(
     id BIGSERIAL PRIMARY KEY,
@@ -93,7 +93,6 @@ CREATE TABLE parqueaderos(
     created_ps TIMESTAMP(0) NOT NULL,
     updated_ps TIMESTAMP(0) NOT NULL   
 );
-
 
 DROP TABLE IF EXISTS sensors CASCADE;
 CREATE TABLE sensors(
@@ -112,6 +111,8 @@ CREATE TABLE sensors(
     FOREIGN KEY (id_parking) REFERENCES parqueaderos(id) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
+
+
 -- INSERT INTO parqueaderos (
 --     name
 -- )
@@ -147,7 +148,11 @@ CREATE TABLE parking1_sensors (
     updated_s TIMESTAMP(0) NOT NULL
 ); 
 
-
+CREATE TABLE mensajes (
+    id BIGSERIAL PRIMARY KEY,
+    description VARCHAR(255) NULL,
+    created_s TIMESTAMP(0) NOT NULL
+); 
 
 
 -- ===================================
@@ -170,3 +175,9 @@ ON
 	P.id_parking = C.id
 WHERE
 	C.id = 1
+
+
+
+
+
+

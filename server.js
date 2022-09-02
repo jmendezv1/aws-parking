@@ -1,11 +1,15 @@
 const express = require('express'); // Requerir el paquete
 const app = express(); // ejecutando la app
 const http = require('http');
-const server = http.createServer(app);
+const server = http.createServer(app);// Node Server
 const logger = require('morgan');
 const cors = require('cors');
 const passport =require('passport');
+// const io = require('socket.io')(server);
 
+
+// Nodo server
+// require('./sockets/menssage_socket');
 /*
 * RUTAS
 */
@@ -13,6 +17,8 @@ const passport =require('passport');
 const users = require('./routes/usersRoutes');
 const parqueaderos = require('./routes/parqueaderosRoutes');
 const sensores = require('./routes/sensoresRoutes');
+const search = require('./routes/searchRoutes');
+const mensajes = require('./routes/mensajesRoutes');
 // const port = process.env.PORT || 3000;
 const port = 3000;
 
@@ -39,14 +45,20 @@ app.set('port',port);
 users(app);
 parqueaderos(app);
 sensores(app);
+search(app);
+mensajes(app);
 
-// server.listen(3000,'172.16.217.195' || 'localhost', function(){
-//     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
-// });
+server.listen(port, (err) => {
 
-server.listen(port, () => {
+    if (err) throw new Error(err);
+
     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
 });
+
+// server.listen(port, (err) => {
+//     if (err) throw new Error(err);
+//     console.log('Aplicacion de NodeJs '+ port + ' Iniciada...')
+// });
 
 
 app.get('/test',(req,res) =>{
@@ -59,9 +71,13 @@ app.use((err,req,res,next) =>{
     res.status(err.status || 500).send(err.stack);
 });
 
+
+
+
 module.exports = {
     app:app,
     server:server
+    // io:io
 }
 
 /* module.exports = server;
