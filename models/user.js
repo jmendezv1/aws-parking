@@ -175,8 +175,8 @@ User.create = (user) => {
         user.img,
         user.msg,
         user.password,
-        user.plaza,
         user.parqueadero,
+        user.plaza,
         user.available,
         new Date(),
         new Date()
