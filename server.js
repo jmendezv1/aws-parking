@@ -69,6 +69,7 @@ app.post('/libelium',(req,res) =>{
         data += chunk;
 
         chunkIndex ++;
+        console.log(data);
         console.log(chunkIndex);
     });
     req.on("end",() =>{
