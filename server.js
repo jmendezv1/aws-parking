@@ -36,13 +36,11 @@ apphttps.post('/libelium',(req,res) =>{
 
     req.on("data",(chunk) =>{
         data += chunk;
-
         chunkIndex ++;
-        console.log(data);
         console.log(chunkIndex);
     });
     req.on("end",() =>{
-
+        console.log(data);
         console.log("Recibido");
         // res.end("Recibido");
     }); 
@@ -112,11 +110,12 @@ app.post('/libelium',(req,res) =>{
         data += chunk;
 
         chunkIndex ++;
-        console.log(data);
+        // console.log(data);
         console.log(chunkIndex);
     });
     req.on("end",() =>{
-        // res.end("Recibido");
+        console.log(data);
+        console.log("Recibido");
     }); 
     // res.send('Copiar codigos del video de youtube y de curso mini');
 });
