@@ -1,33 +1,33 @@
 const express = require('express'); // Requerir el paquete
 const app = express();
-// const apphttps = express();  // ejecutando la app
+const apphttps = express();  // ejecutando la app
 const http = require('http');
 const server = http.createServer(app);// Node Server
 const logger = require('morgan');
 const cors = require('cors');
 const passport =require('passport');
 
-// const https = require('https');
-// const path = require('path');
-// const fs = require('fs');
+const https = require('https');
+const path = require('path');
+const fs = require('fs');
 
-// const sslServer = https.createServer({
-//     cert: fs.readFileSync('server.cer'),
-//     key: fs.readFileSync('server.key'),
-// }, apphttps);
+const sslServer = https.createServer({
+    cert: fs.readFileSync('server.cer'),
+    key: fs.readFileSync('server.key'),
+}, apphttps);
 
-// sslServer.listen(443,(err) => {
-//     if (err) throw new Error(err);
+sslServer.listen(443,(err) => {
+    if (err) throw new Error(err);
 
-//     console.log('Servidor https corriendo en el puerto 443')
+    console.log('Servidor https corriendo en el puerto 443')
     
-// });
+});
 
-// apphttps.get('/https',(req,res) =>{
+apphttps.get('/https',(req,res) =>{
 
-//     res.send('Servidor https esta funcionando ');
+    res.send('Servidor https esta funcionando ');
 
-// });
+});
 
 
 // const io = require('socket.io')(server);
