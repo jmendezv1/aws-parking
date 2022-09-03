@@ -74,4 +74,38 @@ Sensor.update = (sensor) =>{
         new Date()
     ]);
 }
+Sensor.libelium = (sensor) =>{
+    const sql = `
+    UPDATE
+	    pruebasensor
+    SET
+        value_measure = $2,
+        ts = $3,
+        updated = $4
+    WHERE
+        name = $1;
+    `;
+    return db.none(sql,[
+        sensor.name,
+        sensor.value_measure,
+        sensor.ts,
+        new Date()
+    ]);
+}
+Sensor.libelium2 = (sensor) =>{
+    const sql = `
+    UPDATE
+	    pruebasensor2
+    SET
+        available = $2,
+        updated = $3
+    WHERE
+        name = $1;
+    `;
+    return db.none(sql,[
+        sensor.name,
+        sensor.value_measure,
+        new Date()
+    ]);
+}
 module.exports = Sensor;

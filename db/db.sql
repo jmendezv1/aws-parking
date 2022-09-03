@@ -178,6 +178,93 @@ WHERE
 
 
 
+-- ++++++++++++++++====================================
 
 
-
+CREATE TABLE pruebaSensor(
+	id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(200) NOT NULL UNIQUE,
+    variable_name VARCHAR(100) NOT NULL,
+    value_units VARCHAR(16) NOT NULL,
+    value_measure VARCHAR(8) NOT NULL,
+    ts VARCHAR(255) NULL,
+    created TIMESTAMP(0) NOT NULL,
+    updated TIMESTAMP(0) NOT NULL   
+);
+INSERT INTO pruebaSensor (
+    name,
+	variable_name,
+	value_units,
+	value_measure,
+	ts,
+    created,
+    updated
+)
+VALUES(
+    'Device #0004A30B00F95777',
+    'SP2 Parking slot status',
+    'N/A',
+    '0',
+	'2022-09-03T19:55:31+00:00',
+	'2022-07-10',
+    '2022-07-10'
+);
+INSERT INTO pruebaSensor (
+    name,
+	variable_name,
+	value_units,
+	value_measure,
+	ts,
+    created,
+    updated
+)
+VALUES(
+    'Device #0004A30B00F950C0',
+    'SP2 Parking slot status',
+    'N/A',
+    '0',
+	'2022-09-03T19:55:31+00:00',
+	'2022-07-10',
+    '2022-07-10'
+);
+CREATE TABLE pruebaSensor2(
+	id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(200) NOT NULL UNIQUE,
+    type_place VARCHAR(100) NOT NULL,
+    plate VARCHAR(8) NOT NULL,
+    available VARCHAR(8) NOT NULL,
+    created_srs TIMESTAMP(0) NOT NULL,
+    updated_srs TIMESTAMP(0) NOT NULL
+);
+INSERT INTO pruebaSensor2 (
+    name,
+    type_place,
+    plate,
+    available,
+    created_srs,
+    updated_srs
+)
+VALUES(
+    'Device #0004A30B00F95777',
+    'SP2 Parking slot status',
+    'N/A',
+    '0',
+	'2022-07-10',
+    '2022-07-10'
+);
+INSERT INTO pruebaSensor2 (
+    name,
+    type_place,
+    plate,
+    available,
+    created_srs,
+    updated_srs
+)
+VALUES(
+    'Device #0004A30B00F950C0',
+    'SP2 Parking slot status',
+    'N/A',
+    '0',
+	'2022-07-10',
+    '2022-07-10'
+);

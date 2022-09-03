@@ -91,5 +91,29 @@ module.exports = {
             });
         }
     },
+    async updatelibelium(req, res, next) {
+        try {
+            let resultado = req.body;
+            console.log(JSON.stringify(resultado));
+
+            const sensor = req.body;
+            const type = req.params.variable_nam; 
+            console.log(` tipo  ${type}`);
+            if(type=="SP2 Parking slot status"){
+                await Sensor.libelium(sensor);
+                await Sensor.libelium2(sensor);
+            }
+            console.log(`Resultado esperado`);
+            return res.status(201).json({
+                success: true
+            });
+        } 
+        catch (error) {
+            console.log(`Error: ${error}`);
+            return res.status(501).json({
+                success: false
+            });
+        }
+    },
 
 };

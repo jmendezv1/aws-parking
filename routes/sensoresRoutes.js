@@ -13,5 +13,6 @@ module.exports = (app) => {
     //Get: actualizar datos del usuario
     app.put('/api/sensores/update',passport.authenticate('jwt',{session:false}),SensoresController.update);
 
+    app.put('/api/libelium/update',passport.authenticate('jwt',{session:false}),SensoresController.updatelibelium);
 
 }
