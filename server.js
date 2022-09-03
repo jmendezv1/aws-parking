@@ -114,10 +114,7 @@ app.post('/libelium',(req,res) =>{
     //     chunkIndex++;
     //     console.log(chunkIndex);
     // });
-    return res.status(201).json({
-        success: true,
-        message: 'El registro del sensor se realizo correctamente'
-    });
+    return res.status(201);
 
     // req.on("end",() => {
     // //     console.log(data);
