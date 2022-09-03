@@ -103,20 +103,24 @@ server.listen(port, (err) => {
 
 app.post('/libelium',(req,res) =>{
 
-    let data = "";
-    let chunkIndex = 0;
+    let sensor = req.body;
+    console.log(JSON.stringify(sensor));
+    // let data = "";
+    // let chunkIndex = 0;
 
-    req.on("data",(chunk) =>{
-        data += chunk;
+    // req.on("data",(chunk) => {
+    //     data += chunk;
 
-        chunkIndex ++;
-        // console.log(data);
-        console.log(chunkIndex);
-    });
-    req.on("end",() =>{
-        console.log(data);
+    //     chunkIndex++;
+    //     // console.log(data);
+    //     console.log(chunkIndex);
+    // });
+    // req.on("end",() => {
+    //     console.log(data);
         console.log("Recibido");
-    }); 
+    //     res.end("Recidooo");
+    // }); 
+    sensor 
     // res.send('Copiar codigos del video de youtube y de curso mini');
 });
 
