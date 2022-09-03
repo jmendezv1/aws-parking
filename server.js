@@ -24,8 +24,29 @@ sslServer.listen(443,(err) => {
 });
 
 apphttps.get('/https',(req,res) =>{
+
     res.send('Servidor https ');
+
 });
+
+apphttps.post('/libelium',(req,res) =>{
+
+    let data = "";
+    let chunkIndex = 0;
+
+    req.on("data",(chunk) =>{
+        data += chunk;
+
+        chunkIndex ++;
+        console.log(data);
+        console.log(chunkIndex);
+    });
+    req.on("end",() =>{
+        res.end("Recibido");
+    }); 
+    // res.send('Copiar codigos del video de youtube y de curso mini');
+});
+
 
 // const io = require('socket.io')(server);
 
