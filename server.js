@@ -114,7 +114,9 @@ app.post('/libelium',(req,res) =>{
     //     chunkIndex++;
     //     console.log(chunkIndex);
     // });
-    return res.status(201);
+    return res.status(201).json({
+        success: true
+    });
 
     // req.on("end",() => {
     // //     console.log(data);
