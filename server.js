@@ -112,14 +112,18 @@ app.post('/libelium',(req,res) =>{
     //     data += chunk;
 
     //     chunkIndex++;
-    //     // console.log(data);
     //     console.log(chunkIndex);
     // });
-    req.on("end",() => {
-    //     console.log(data);
-        console.log("Recibido");
-        res.end("Recidooo");
-    }); 
+    return res.status(201).json({
+        success: true,
+        message: 'El registro del sensor se realizo correctamente'
+    });
+
+    // req.on("end",() => {
+    // //     console.log(data);
+    //     console.log("Recibido");
+    //     res.end("Recidooo");
+    // }); 
     // res.send('Copiar codigos del video de youtube y de curso mini');
 });
 
