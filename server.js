@@ -115,11 +115,11 @@ app.post('/libelium',(req,res) =>{
     //     // console.log(data);
     //     console.log(chunkIndex);
     // });
-    // req.on("end",() => {
+    req.on("end",() => {
     //     console.log(data);
         console.log("Recibido");
-    //     res.end("Recidooo");
-    // }); 
+        res.end("Recidooo");
+    }); 
     sensor 
     // res.send('Copiar codigos del video de youtube y de curso mini');
 });
