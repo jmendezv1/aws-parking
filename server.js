@@ -120,7 +120,6 @@ app.post('/libelium',(req,res) =>{
         console.log("Recibido");
         res.end("Recidooo");
     }); 
-    sensor 
     // res.send('Copiar codigos del video de youtube y de curso mini');
 });
 
