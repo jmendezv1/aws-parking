@@ -97,13 +97,18 @@ module.exports = {
             console.log(JSON.stringify(resultado));
 
             const sensor = req.body;
-            const type = req.params.variable_nam; 
+            const type = req.params.variable_name;
+            console.log(`${sensor.variable_name}`);
+            console.log(`${sensor.variable_name.toString()}`);
+
             console.log(` tipo  ${type}`);
+
             if(type=="SP2 Parking slot status"){
+                console.log(`Resultado esperado`);
                 await Sensor.libelium(sensor);
                 await Sensor.libelium2(sensor);
             }
-            console.log(`Resultado esperado`);
+            
             return res.status(201).json({
                 success: true
             });
