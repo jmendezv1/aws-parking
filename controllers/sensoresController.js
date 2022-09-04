@@ -93,21 +93,25 @@ module.exports = {
     },
     async updatelibelium(req, res, next) {
         try {
+
             let resultado = req.body;
             console.log(JSON.stringify(resultado));
-
             const sensor = req.body;
+            // const sensor = req.body;
             const status = `SP2 Parking slot status`;
-            const variable = req.params.variable_name.toString(); 
-
-            console.log(`tipo ${variable}`);
-            console.log(`status ${status}`);
+            const variable = String(sensor.variable_name); 
+            console.log(`------------`);
+            console.log(`Como debe de ser: ${sensor.variable_name}`);
+            console.log(`------------`);
+            console.log(`variable_name: ${variable}`);
+            console.log(`variable: ${status}`);
 
             if(variable==status){
                 console.log(`Resultado esperado`);
                 await Sensor.libelium(sensor);
                 await Sensor.libelium2(sensor);
             }
+
             
             return res.status(201).json({
                 success: true

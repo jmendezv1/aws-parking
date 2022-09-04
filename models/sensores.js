@@ -98,7 +98,7 @@ Sensor.libelium2 = (sensor) =>{
 	    pruebasensor2
     SET
         available = $2,
-        updated = $3
+        updated_srs = $3
     WHERE
         name = $1;
     `;
