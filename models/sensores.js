@@ -77,7 +77,7 @@ Sensor.update = (sensor) =>{
 Sensor.libelium = (sensor) =>{
     const sql = `
     UPDATE
-	    pruebasensor
+        libeliumsensor
     SET
         value_measure = $2,
         ts = $3,
@@ -92,15 +92,33 @@ Sensor.libelium = (sensor) =>{
         new Date()
     ]);
 }
-Sensor.libelium2 = (sensor) =>{
+Sensor.libeliumfalse = (sensor) =>{
     const sql = `
     UPDATE
-	    pruebasensor2
+	    sensors
+    SET
+        plate = $2,
+        available = $3,
+        updated_srs = $4
+    WHERE
+        code = $1;
+    `;
+    return db.none(sql,[
+        sensor.name,
+        'Sin placa',
+        sensor.value_measure,
+        new Date()
+    ]);
+}
+Sensor.libeliumtrue = (sensor) =>{
+    const sql = `
+    UPDATE
+	    sensors
     SET
         available = $2,
         updated_srs = $3
     WHERE
-        name = $1;
+        code = $1;
     `;
     return db.none(sql,[
         sensor.name,
@@ -108,4 +126,38 @@ Sensor.libelium2 = (sensor) =>{
         new Date()
     ]);
 }
+
+Sensor.libeliumplate = (name) => {
+    const sql = `
+    SELECT
+        plate
+    FROM
+        sensors 
+    WHERE
+        code = $1;
+    `;
+    return db.oneOrNone(sql,name);
+}
+
+Sensor.userupdate = (user) => {
+    const sql = `
+    UPDATE
+        users
+    SET
+        parqueadero = $2,
+        plaza = $3,
+        available = $4,
+        updated_at = $5
+    WHERE
+        plate = $1
+    `;
+    return db.none(sql,[
+        user,
+        'Sin parqueadero',
+        'Sin plaza',
+        false,
+        new Date()
+    ])
+}
+
 module.exports = Sensor;

@@ -95,21 +95,35 @@ module.exports = {
         try {
 
             let resultado = req.body;
-            console.log(JSON.stringify(resultado));
+            // console.log(JSON.stringify(resultado));
             const sensor = req.body;
             // const sensor = req.body;
             const status = `SP2 Parking slot status`;
             const variable = String(sensor.variable_name); 
-            console.log(`------------`);
-            console.log(`Como debe de ser: ${sensor.variable_name}`);
-            console.log(`------------`);
-            console.log(`variable_name: ${variable}`);
-            console.log(`variable: ${status}`);
-
+            const available = String(sensor.value_measure); 
+            const name = String(sensor.name); 
+            console.log(`--------${name}`);
+            // console.log(`Como debe de ser: ${sensor.variable_name}`);
+            // console.log(`------------`);
+            // console.log(`variable_name: ${variable}`);
+            // console.log(`variable: ${status}`);
             if(variable==status){
-                console.log(`Resultado esperado`);
+                // console.log(`Resultado esperado`);
+                if(available=='1'){
+                    console.log(`1 a true`);
+                    sensor.value_measure = true;
+                    await Sensor.libeliumtrue(sensor);
+                }else{
+                    console.log(`0 a false`);
+                    sensor.value_measure = false;
+                    const plate = await Sensor.libeliumplate(name);
+                    const plateuser = String(plate.plate); 
+                    console.log(`--------${plateuser}`);
+                    await Sensor.userupdate(plateuser);
+                    await Sensor.libeliumfalse(sensor);
+                }
+                console.log(JSON.stringify(resultado));
                 await Sensor.libelium(sensor);
-                await Sensor.libelium2(sensor);
             }
 
             
