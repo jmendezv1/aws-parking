@@ -120,9 +120,15 @@ module.exports = {
                     const plateuser = String(plate.plate); 
                     console.log(`--------${plateuser}`);
                     const entrada = await Sensor.libeliumentrada(plateuser);
-                    const updateuser = String(entrada.updated_at); 
-                    console.log(`--------${updateuser}`);
-                    await Sensor.historialupdate(updateuser);
+
+                    if (entrada == null){
+
+                    }else{
+                        const updateuser = String(entrada.updated_at); 
+                        console.log(`--------${updateuser}`);
+                        await Sensor.historialupdate(updateuser);
+                    }
+                    
                     await Sensor.userupdate(plateuser);
                     await Sensor.libeliumfalse(sensor);
                 }

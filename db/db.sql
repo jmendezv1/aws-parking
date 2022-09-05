@@ -181,16 +181,16 @@ WHERE
 
 CREATE TABLE historial(
     id BIGSERIAL PRIMARY KEY,
-    plate VARCHAR(50) NOT NULL UNIQUE,
+    plate VARCHAR(50) NOT NULL,
     name VARCHAR(155) NOT NULL,
-    ci VARCHAR(80) NOT NULL UNIQUE,
-    phone VARCHAR(80) NOT NULL UNIQUE,
+    ci VARCHAR(80) NOT NULL,
+    phone VARCHAR(80) NOT NULL,
     msg VARCHAR(255) NULL,
     parqueadero VARCHAR(50) NOT NULL,
     plaza VARCHAR(50) NOT NULL,
     entrada TIMESTAMP(0) NOT NULL,
     salida TIMESTAMP(0) NOT NULL,
-    id_user
+    id_user VARCHAR(8) NOT NULL
 );
 
 
