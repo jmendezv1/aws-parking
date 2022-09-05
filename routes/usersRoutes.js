@@ -10,6 +10,12 @@ module.exports = (app) => {
     app.get('/api/users/findById/:id',passport.authenticate('jwt',{session:false}), UserController.findById);
     //Post: Ingresr datos
     app.post('/api/users/create',UserController.register);
+
+    // historial
+    app.post('/api/users/create/historial',UserController.registerhistorial);
+    app.get('/api/users/historial/:id',UserController.allhistorial);
+
+
     //Post: para emitir un login
     app.post('/api/users/login',UserController.login);
     //Post: para dalir del login

@@ -138,7 +138,31 @@ Sensor.libeliumplate = (name) => {
     `;
     return db.oneOrNone(sql,name);
 }
-
+Sensor.libeliumentrada = (name) => {
+    const sql = `
+    SELECT
+        updated_at
+    FROM
+        users 
+    WHERE
+        plate = $1;
+    `;
+    return db.oneOrNone(sql,name);
+}
+Sensor.historialupdate = (fecha) => {
+    const sql = `
+    UPDATE
+        historial
+    SET
+        salida = $2
+    WHERE
+        entrada = $1
+    `;
+    return db.none(sql,[
+        fecha,
+        new Date()
+    ])
+}
 Sensor.userupdate = (user) => {
     const sql = `
     UPDATE

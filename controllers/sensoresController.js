@@ -93,7 +93,6 @@ module.exports = {
     },
     async updatelibelium(req, res, next) {
         try {
-
             let resultado = req.body;
             // console.log(JSON.stringify(resultado));
             const sensor = req.body;
@@ -117,8 +116,13 @@ module.exports = {
                     console.log(`0 a false`);
                     sensor.value_measure = false;
                     const plate = await Sensor.libeliumplate(name);
+
                     const plateuser = String(plate.plate); 
                     console.log(`--------${plateuser}`);
+                    const entrada = await Sensor.libeliumentrada(plateuser);
+                    const updateuser = String(entrada.updated_at); 
+                    console.log(`--------${updateuser}`);
+                    await Sensor.historialupdate(updateuser);
                     await Sensor.userupdate(plateuser);
                     await Sensor.libeliumfalse(sensor);
                 }

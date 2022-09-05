@@ -141,6 +141,60 @@ User.findByEmail = (email) => {
     return db.oneOrNone(sql, email);
 }
 
+User.createhistorial = (user) => {
+    const sql = `
+    INSERT INTO
+        historial(
+            plate,
+            name,
+            ci,
+            phone,
+            msg,
+            parqueadero,
+            plaza,
+            entrada,
+            salida,
+            id_user
+        )
+    VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id
+    `;
+    return db.oneOrNone(sql, [
+        user.plate,
+        user.name,
+        user.ci,
+        user.phone,
+        user.msg,
+        user.parqueadero,
+        user.plaza,
+        new Date(),
+        '2022-09-04 20:50:40',
+        user.id
+    ]);
+}
+
+User.getAllhistorial = (id) => {
+    const sql = `
+    SELECT
+        id,
+        plate,
+        name,
+        ci,
+        phone,
+        msg,
+        parqueadero,
+        plaza,
+		entrada,
+		salida
+    FROM
+        historial
+    WHERE
+        id_user = '1' AND salida != '2022-09-04 20:50:40'
+    GROUP BY
+        id
+    `
+    return db.manyOrNone(sql, id);
+}
+
 User.create = (user) => {
 
     const myPasswordHashed = crypto.createHash('md5').update(user.password).digest('hex');

@@ -178,93 +178,59 @@ WHERE
 
 
 
+
+CREATE TABLE historial(
+    id BIGSERIAL PRIMARY KEY,
+    plate VARCHAR(50) NOT NULL UNIQUE,
+    name VARCHAR(155) NOT NULL,
+    ci VARCHAR(80) NOT NULL UNIQUE,
+    phone VARCHAR(80) NOT NULL UNIQUE,
+    msg VARCHAR(255) NULL,
+    parqueadero VARCHAR(50) NOT NULL,
+    plaza VARCHAR(50) NOT NULL,
+    entrada TIMESTAMP(0) NOT NULL,
+    salida TIMESTAMP(0) NOT NULL,
+    id_user
+);
+
+
+
 -- ++++++++++++++++====================================
 
 
-CREATE TABLE pruebaSensor(
+CREATE TABLE libeliumsensor(
 	id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(200) NOT NULL UNIQUE,
+    name VARCHAR(100) NOT NULL UNIQUE,
     variable_name VARCHAR(100) NOT NULL,
-    value_units VARCHAR(16) NOT NULL,
-    value_measure VARCHAR(8) NOT NULL,
-    ts VARCHAR(255) NULL,
-    created TIMESTAMP(0) NOT NULL,
+    value_measure BOOLEAN NOT NULL,
+    ts VARCHAR(100) NULL,
     updated TIMESTAMP(0) NOT NULL   
 );
-INSERT INTO pruebaSensor (
+INSERT INTO libeliumsensor (
     name,
 	variable_name,
-	value_units,
 	value_measure,
 	ts,
-    created,
     updated
 )
 VALUES(
-    'Device #0004A30B00F95777',
+    '0004A30B00F950C0',
     'SP2 Parking slot status',
-    'N/A',
-    '0',
+    false,
 	'2022-09-03T19:55:31+00:00',
-	'2022-07-10',
     '2022-07-10'
 );
-INSERT INTO pruebaSensor (
+INSERT INTO libeliumsensor (
     name,
 	variable_name,
-	value_units,
 	value_measure,
 	ts,
-    created,
     updated
 )
 VALUES(
-    'Device #0004A30B00F950C0',
+    '0004A30B00FD38E8',
     'SP2 Parking slot status',
-    'N/A',
-    '0',
+    false,
 	'2022-09-03T19:55:31+00:00',
-	'2022-07-10',
-    '2022-07-10'
-);
-CREATE TABLE pruebaSensor2(
-	id BIGSERIAL PRIMARY KEY,
-    name VARCHAR(200) NOT NULL UNIQUE,
-    type_place VARCHAR(100) NOT NULL,
-    plate VARCHAR(8) NOT NULL,
-    available VARCHAR(8) NOT NULL,
-    created_srs TIMESTAMP(0) NOT NULL,
-    updated_srs TIMESTAMP(0) NOT NULL
-);
-INSERT INTO pruebaSensor2 (
-    name,
-    type_place,
-    plate,
-    available,
-    created_srs,
-    updated_srs
-)
-VALUES(
-    'Device #0004A30B00F95777',
-    'SP2 Parking slot status',
-    'N/A',
-    '0',
-	'2022-07-10',
-    '2022-07-10'
-);
-INSERT INTO pruebaSensor2 (
-    name,
-    type_place,
-    plate,
-    available,
-    created_srs,
-    updated_srs
-)
-VALUES(
-    'Device #0004A30B00F950C0',
-    'SP2 Parking slot status',
-    'N/A',
-    '0',
-	'2022-07-10',
     '2022-07-10'
 );

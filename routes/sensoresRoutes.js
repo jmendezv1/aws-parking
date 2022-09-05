@@ -14,5 +14,4 @@ module.exports = (app) => {
     app.put('/api/sensores/update',passport.authenticate('jwt',{session:false}),SensoresController.update);
 
     app.post('/api/libelium/update',SensoresController.updatelibelium);
-
 }
