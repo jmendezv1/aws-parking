@@ -94,6 +94,7 @@ module.exports = {
     async updatelibelium(req, res, next) {
         try {
             let resultado = req.body;
+            console.log(`Ingreso:`);
             console.log(JSON.stringify(resultado));
             const sensor = req.body;
             // const sensor = req.body;
@@ -101,9 +102,9 @@ module.exports = {
             const variable = String(sensor.variable_name); 
             const available = String(sensor.value_measure); 
 
-            console.log(`available :  ${sensor.value_measure}`);
+            // console.log(`available :  ${sensor.value_measure}`);
             const name = String(sensor.name); 
-            console.log(`name : ${name}`);
+            // console.log(`name : ${name}`);
             // console.log(`Como debe de ser: ${sensor.variable_name}`);
             console.log(`------------`);
             // console.log(`variable_name: ${variable}`);
@@ -114,6 +115,7 @@ module.exports = {
                     sensor.value_measure = true;
                     await Sensor.libeliumtrue(sensor);
                     console.log(`------------`);
+                    console.log(`Resultado`);
                     console.log(JSON.stringify(resultado));
                     await Sensor.libelium(sensor);
                 }else{
