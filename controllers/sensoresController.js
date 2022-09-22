@@ -94,8 +94,6 @@ module.exports = {
     async updatelibelium(req, res, next) {
         try {
             let resultado = req.body;
-            console.log(`Ingreso:`);
-            console.log(JSON.stringify(resultado));
             const sensor = req.body;
             // const sensor = req.body;
             const status = `SP2 Parking slot status`;
@@ -110,6 +108,8 @@ module.exports = {
             // console.log(`variable_name: ${variable}`);
             // console.log(`variable: ${status}`);
             if(variable==status){
+                console.log(`Ingreso:`);
+                console.log(JSON.stringify(resultado));
                 if(available=='1'){
                     console.log(`1 a true`);
                     sensor.value_measure = true;
