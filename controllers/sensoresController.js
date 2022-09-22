@@ -94,7 +94,7 @@ module.exports = {
     async updatelibelium(req, res, next) {
         try {
             let resultado = req.body;
-            // console.log(JSON.stringify(resultado));
+            console.log(JSON.stringify(resultado));
             const sensor = req.body;
             // const sensor = req.body;
             const status = `SP2 Parking slot status`;
@@ -102,10 +102,10 @@ module.exports = {
             const available = String(sensor.value_measure); 
             const name = String(sensor.name); 
             console.log(`--------${name}`);
-            // console.log(`Como debe de ser: ${sensor.variable_name}`);
-            // console.log(`------------`);
-            // console.log(`variable_name: ${variable}`);
-            // console.log(`variable: ${status}`);
+            console.log(`Como debe de ser: ${sensor.variable_name}`);
+            console.log(`------------`);
+            console.log(`variable_name: ${variable}`);
+            console.log(`variable: ${status}`);
             if(variable==status){
                 if(available=='1'){
                     console.log(`1 a true`);
@@ -126,6 +126,9 @@ module.exports = {
                             await Sensor.historialupdate(updateuser);
                         }
                         await Sensor.userupdate(plateuser);
+                    }else{
+
+                        
                     }
 
                     await Sensor.libeliumfalse(sensor);
