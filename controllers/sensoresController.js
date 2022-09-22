@@ -101,24 +101,27 @@ module.exports = {
             const variable = String(sensor.variable_name); 
             const available = String(sensor.value_measure); 
 
-            console.log(`available   ----${sensor.value_measure}`);
+            console.log(`available :  ${sensor.value_measure}`);
             const name = String(sensor.name); 
-            console.log(`--------${name}`);
-            console.log(`Como debe de ser: ${sensor.variable_name}`);
+            console.log(`name : ${name}`);
+            // console.log(`Como debe de ser: ${sensor.variable_name}`);
             console.log(`------------`);
-            console.log(`variable_name: ${variable}`);
-            console.log(`variable: ${status}`);
+            // console.log(`variable_name: ${variable}`);
+            // console.log(`variable: ${status}`);
             if(variable==status){
                 if(available=='1'){
                     console.log(`1 a true`);
                     sensor.value_measure = true;
                     await Sensor.libeliumtrue(sensor);
+                    console.log(`------------`);
+                    console.log(JSON.stringify(resultado));
+                    await Sensor.libelium(sensor);
                 }else{
                     console.log(`0 a false`);
                     sensor.value_measure = false;
                     const plate = await Sensor.libeliumplate(name);
                     const plateuser = String(plate.plate); 
-                    console.log(`--------${plateuser}`);
+                    console.log(`placa: ${plateuser}`);
 
                     if (plateuser !=`Sin placa`){
                         const entrada = await Sensor.libeliumentrada(plateuser);
@@ -128,15 +131,13 @@ module.exports = {
                             await Sensor.historialupdate(updateuser);
                         }
                         await Sensor.userupdate(plateuser);
-                    }else{
-
-                        
                     }
-
+                    console.log(`------------`);
                     await Sensor.libeliumfalse(sensor);
+                    console.log(`------------`);
+                    console.log(JSON.stringify(resultado));
+                    await Sensor.libelium(sensor);
                 }
-                console.log(JSON.stringify(resultado));
-                await Sensor.libelium(sensor);
             }
 
             
