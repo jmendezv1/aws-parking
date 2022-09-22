@@ -107,7 +107,6 @@ module.exports = {
             // console.log(`variable_name: ${variable}`);
             // console.log(`variable: ${status}`);
             if(variable==status){
-                // console.log(`Resultado esperado`);
                 if(available=='1'){
                     console.log(`1 a true`);
                     sensor.value_measure = true;
@@ -116,20 +115,19 @@ module.exports = {
                     console.log(`0 a false`);
                     sensor.value_measure = false;
                     const plate = await Sensor.libeliumplate(name);
-
                     const plateuser = String(plate.plate); 
                     console.log(`--------${plateuser}`);
-                    const entrada = await Sensor.libeliumentrada(plateuser);
 
-                    if (entrada == null){
-
-                    }else{
-                        const updateuser = String(entrada.updated_at); 
-                        console.log(`--------${updateuser}`);
-                        await Sensor.historialupdate(updateuser);
+                    if (plateuser !=`Sin placa`){
+                        const entrada = await Sensor.libeliumentrada(plateuser);
+                        if (entrada != null){
+                            const updateuser = String(entrada.updated_at); 
+                            console.log(`--------${updateuser}`);
+                            await Sensor.historialupdate(updateuser);
+                        }
+                        await Sensor.userupdate(plateuser);
                     }
-                    
-                    await Sensor.userupdate(plateuser);
+
                     await Sensor.libeliumfalse(sensor);
                 }
                 console.log(JSON.stringify(resultado));
