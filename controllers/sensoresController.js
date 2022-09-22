@@ -100,6 +100,8 @@ module.exports = {
             const status = `SP2 Parking slot status`;
             const variable = String(sensor.variable_name); 
             const available = String(sensor.value_measure); 
+
+            console.log(`available   ----${sensor.value_measure}`);
             const name = String(sensor.name); 
             console.log(`--------${name}`);
             console.log(`Como debe de ser: ${sensor.variable_name}`);
